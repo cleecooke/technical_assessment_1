@@ -31,24 +31,27 @@ function addIngredients (ingrType, ingrArray) {
   //          }
 
   function formatPrice (itemValue) {
-    priceSignAdded = "$" + itemValue;
-  }
+    var priceSignAdded = "$" + itemValue;
+    return priceSignAdded;
+  } 
 
   // COOKE-NOTE: having issues with this, trying to move forward
 
-  function decreasePrice (currentPrice) {
+  function decreasePrice (currentPrice, fullPrice) {
     var priceTenPerOff = (currentPrice - currentPrice * (1 / 10));
-    if (currentPrice == mPrice) {
+    if (currentPrice == fullPrice) {
       return priceTenPerOff;
+    } else {
+      return currentPrice;
     }
-  }
+  }       // ** AssertionError: expected 6 to equal 5.4, actual -6?
 
 
 
   function createRecipe (ingred, cost, meal) {
     var menuItemType = {
-      title:          ingred,
-      price:          cost,
+      title:      ingred,
+      price:      cost,
       menuItem:   meal,
     }                                   
       return menuItemType;
